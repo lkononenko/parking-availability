@@ -1,0 +1,42 @@
+@import "../../app.variables.scss";
+
+.row {
+  border-bottom: 1px solid #e8ebeb;
+  padding: 1rem 0;
+  margin: 0 -1rem;
+
+  &:hover {
+    background-color: $color_bg;
+  }
+
+  [class^="col-"] {
+    padding: 0.5rem 1rem;
+  }
+  .col-btn {
+    padding-top: 0;
+    padding-bottom: 0;
+    text-align: right;
+  }
+}
+h3 {
+  margin: 0;
+
+  &:before {
+    content: '';
+    background: $color_brand2;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 1rem;
+    position: relative;
+    top: 0.2rem;
+  }
+}
+.no-free {
+  h3:before,
+  .btn,
+  .btn:hover {
+    background: $color_brand;
+  }
+}

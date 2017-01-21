@@ -1,1 +1,66 @@
-/* You can add global styles to this file, and also import other style files */
+@import "./app/app.variables.scss";
+
+body {
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  color: $color_main;
+  padding: 0;
+  margin: 0;
+  background: #fff;
+}
+header,
+footer,
+.content {
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+}
+h1 {
+  color: $color_main;
+}
+h2 {
+  color: $color_brand;
+}
+h3 {
+  font-size: 1.25rem;
+}
+
+a,
+a:visited {
+  color: $color_brand;
+}
+a:hover {
+  color: #07C;
+  text-decoration: none;
+}
+.btn {
+  border: none;
+  cursor: pointer;
+}
+.btn-primary {
+  color: #fff;
+  background-color: $color_brand2;
+
+  &:hover {
+    background-color: #008000;
+  }
+}
+
+@media (max-width: 499px) {
+  html {
+    font-size: 12px;
+  }
+}
+@media (min-width: 500px) and (max-width: 999px) {
+  html {
+    font-size: 14px;
+  }
+}
+@media (min-width: 1000px) and (max-width: 1999px) {
+  html {
+    font-size: 16px;
+  }
+}
+@media (min-width: 2000px) {
+  html {
+    font-size: 18px;
+  }
+}

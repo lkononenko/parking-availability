@@ -22,9 +22,24 @@ export class GaragesService {
   }
 
   private extractGarages(res: Response) {
-    return res.json().features.map(
-      garage => new Garage(garage)
+    let garages: Garage[] = [];
+    let mockElement: Garage = {
+      id: 'mock-garage',
+      name: 'Mock Garage without free places',
+      longCapacity: 120,
+      shortCapacity: 100,
+      freeSpaceLong: 0,
+      freeSpaceShort: 0,
+      coords: { lon: '52.393721', lat: '4.867133' },
+      totalSpaces: 220,
+      freeSpaces: 0
+    };
+
+    res.json().features.map(
+      garage => garages.push(new Garage(garage))
     );
+    garages.unshift(mockElement);
+    return garages;
   }
 
   private handleError(error: Response | any) {
@@ -36,5 +51,4 @@ export class GaragesService {
     }
     return Observable.throw(errMsg);
   }
-
 }

@@ -6,6 +6,8 @@ export class Garage {
   freeSpaceLong: number;
   freeSpaceShort: number;
   coords: { lat: string, lon: string; };
+  totalSpaces: number;
+  freeSpaces: number;
 
   constructor(garage) {
     const garageData = garage.properties.layers['parking.garage'].data;
@@ -20,9 +22,11 @@ export class Garage {
       lat: garage.geometry.coordinates[0] || '',
       lon: garage.geometry.coordinates[1] || ''
     };
+    this.totalSpaces = this.longCapacity + this.shortCapacity;
+    this.freeSpaces = this.freeSpaceLong + this.freeSpaceShort;
   }
 
-  private getId(cdk_id, layer) {
+  getId(cdk_id, layer) {
     return cdk_id.replace(layer + '.', '');
   }
 }

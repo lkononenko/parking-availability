@@ -1,0 +1,16 @@
+@import "./app.variables.scss";
+
+header {
+  border-top: 0.3rem solid $color_brand;
+  background-color: $color_bg;
+
+  h1 {
+    font-size: 2rem;
+    margin: 0;
+
+    a {
+      text-decoration: none;
+      color: $color_main;
+    }
+  }
+}

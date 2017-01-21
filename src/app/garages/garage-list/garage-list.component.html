@@ -1,3 +1,15 @@
 <p class="text-danger" *ngIf="errorMessage">{{ errorMessage }}</p>
-<h2>Garages</h2>
-<pre>{{ garages | json }}</pre>
+<div *ngIf="garages && garages.length > 0" class="products">
+  <h2>Garages</h2>
+  <div class="row" *ngFor="let garage of garages" [ngClass]="{ 'no-free': garage.freeSpaces === 0 }">
+    <div class="col-md-6"><h3>{{ garage.name }}</h3></div>
+    <div class="col-md-2">Total: {{ garage.totalSpaces }}</div>
+    <div class="col-md-2">Free: {{ garage.freeSpaces }}</div>
+    <div class="col-md-2 col-btn">
+      <button class="btn btn-primary">View on map</button>
+    </div>
+  </div>
+</div>
+<div *ngIf="garages && garages.length == 0">
+  There are no garages.
+</div>
