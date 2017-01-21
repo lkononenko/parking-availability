@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Http, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
+import { Router } from '@angular/router';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/observable/throw';
@@ -10,20 +11,39 @@ import { CONST } from '../const';
 
 @Injectable()
 export class GaragesService {
+  currentGarage: Garage;
+  private garagesApiUrl: string = CONST.API + 'parking.garage/objects?per_page=25';
 
-  constructor(private http: Http) { }
+  constructor(private http: Http,
+              private router: Router) { }
 
   getGarages(): Observable<Garage[]> {
-    const garagesApiUrl = CONST.API + 'parking.garage/objects?per_page=25';
-
-    return this.http.get(garagesApiUrl)
+    return this.http.get(this.garagesApiUrl)
       .map(this.extractGarages)
+      .catch(this.handleError);
+  }
+
+  getGarageById(id) {
+    return this.http.get(this.garagesApiUrl)
+      .map((res: Response) => {
+        let foundGarage = res.json().features
+          .filter(garage => {
+            let apiId = garage.properties.layer + '.' + id;
+            return garage.properties.cdk_id == apiId;
+          });
+
+        if (foundGarage[0]) {
+          return new Garage(foundGarage[0]);
+        } else {
+          this.router.navigate(['/garages']);
+        }
+      })
       .catch(this.handleError);
   }
 
   private extractGarages(res: Response) {
     let garages: Garage[] = [];
-    let mockElement: Garage = {
+    let mockElement: Garage = <Garage>{
       id: 'mock-garage',
       name: 'Mock Garage without free places',
       longCapacity: 120,

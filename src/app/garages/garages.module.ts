@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { GaragesRoutingModule } from './garages-routing.module';
 import { GarageListComponent } from './garage-list/garage-list.component';
 import { GaragesService } from './garages.service';
+import { GarageDetailComponent } from './garage-detail/garage-detail.component';
 
 @NgModule({
   imports: [
@@ -11,7 +12,7 @@ import { GaragesService } from './garages.service';
 
     GaragesRoutingModule
   ],
-  declarations: [ GarageListComponent ],
+  declarations: [ GarageListComponent, GarageDetailComponent ],
   providers: [ GaragesService ]
 })
 export class GaragesModule { }

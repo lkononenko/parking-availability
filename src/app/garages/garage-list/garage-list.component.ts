@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { GaragesService } from '../garages.service';
 import { Garage } from '../garage.model';
@@ -12,10 +13,16 @@ export class GarageListComponent implements OnInit {
   garages: Garage[];
   errorMessage: string;
 
-  constructor(private garagesService: GaragesService) { }
+  constructor(private garagesService: GaragesService,
+              private router: Router) { }
 
   ngOnInit() {
     this.getGarages();
+  }
+
+  garageDetail(garage) {
+    this.router.navigate(['/garages', garage.id]);
+    this.garagesService.currentGarage = garage;
   }
 
   private getGarages() {
