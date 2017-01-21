@@ -5,6 +5,7 @@ import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 import { GaragesModule } from './garages/garages.module';
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { GaragesModule } from './garages/garages.module';
     FormsModule,
     HttpModule,
 
+    AppRoutingModule,
     GaragesModule
   ],
   providers: [],
