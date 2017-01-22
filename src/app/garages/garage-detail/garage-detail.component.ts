@@ -12,6 +12,9 @@ import { GaragesService } from '../garages.service';
 export class GarageDetailComponent implements OnInit {
   garage: Garage;
   errorMessage: string;
+  // google map zoom
+  zoom: number = 12;
+
 
   constructor(private garagesService: GaragesService,
               private route: ActivatedRoute) { }
@@ -26,15 +29,10 @@ export class GarageDetailComponent implements OnInit {
     } else {
       this.route.params.subscribe(
         (params: Params) => this.garagesService.getGarageById(params['id']).subscribe(
-          (garage: Garage) => {
-            console.log('in get garage');
-            console.log(garage);
-            this.garage = garage
-          },
+          (garage: Garage) => this.garage = garage,
           (error: string) => this.errorMessage = error
         )
       );
     }
   }
-
 }

@@ -2,11 +2,35 @@
 <div *ngIf="garage" class="garage-detail">
   <h2>{{ garage.name }}</h2>
   <a routerLink="/garages" class="go-back">&laquo; All Garages</a>
-  <h3>Available</h3>
-  <p>Free Spaces for a long time: <b>{{ garage.freeSpaceLong }}</b></p>
-  <p>Free Spaces for a short period of time: <b>{{ garage.freeSpaceShort }}</b></p>
-  <h3>Total</h3>
-  <p>Long Capacity: {{ garage.longCapacity }}</p>
-  <p>Short Capacity: {{ garage.shortCapacity }}</p>
+  <div class="row">
+    <div class="col-md-6 col-sm-12">
+      <sebm-google-map
+        [latitude]="garage.coords.lat"
+        [longitude]="garage.coords.lon"
+        [zoom]="zoom"
+        [disableDefaultUI]="false"
+        [zoomControl]="true">
+
+        <sebm-google-map-marker
+          [latitude]="garage.coords.lat"
+          [longitude]="garage.coords.lon"
+          [markerDraggable]="false">
+
+          <sebm-google-map-info-window>
+            <strong>{{ garage.name }}</strong>
+          </sebm-google-map-info-window>
+
+        </sebm-google-map-marker>
+      </sebm-google-map>
+    </div>
+    <div class="col-md-6 col-sm-12">
+      <h3 class="mt-0">Available</h3>
+      <p>Free Spaces for a long time: <b>{{ garage.freeSpaceLong }}</b></p>
+      <p>Free Spaces for a short period of time: <b>{{ garage.freeSpaceShort }}</b></p>
+      <h3>Total</h3>
+      <p>Long Capacity: {{ garage.longCapacity }}</p>
+      <p>Short Capacity: {{ garage.shortCapacity }}</p>
+    </div>
+  </div>
 </div>
 

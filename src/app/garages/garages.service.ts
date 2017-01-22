@@ -50,7 +50,7 @@ export class GaragesService {
       shortCapacity: 100,
       freeSpaceLong: 0,
       freeSpaceShort: 0,
-      coords: { lon: '52.393721', lat: '4.867133' },
+      coords: { lon: 4.867133, lat: 52.393721 },
       totalSpaces: 220,
       freeSpaces: 0
     };
@@ -63,11 +63,11 @@ export class GaragesService {
   }
 
   private handleError(error: Response | any) {
-    let errMsg: string;
+    let errMsg: string = 'Sorry, something went wrong! ';
     if (error instanceof Response) {
-      errMsg = `${error.status} - ${error.statusText || ''}`;
+      errMsg += `${error.status} - ${error.statusText || ''}`;
     } else {
-      errMsg = error.message ? error.message : error.toString();
+      errMsg += error.message ? error.message : error.toString();
     }
     return Observable.throw(errMsg);
   }

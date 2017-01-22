@@ -5,7 +5,7 @@ export class Garage {
   shortCapacity: number;
   freeSpaceLong: number;
   freeSpaceShort: number;
-  coords: { lat: string, lon: string; };
+  coords: { lat: number, lon: number; };
   totalSpaces: number;
   freeSpaces: number;
 
@@ -19,8 +19,8 @@ export class Garage {
     this.freeSpaceLong = garageData.FreeSpaceLong || 0;
     this.freeSpaceShort = garageData.FreeSpaceShort || 0;
     this.coords = {
-      lat: garage.geometry.coordinates[0] || '',
-      lon: garage.geometry.coordinates[1] || ''
+      lon: garage.geometry.coordinates[0] || '',
+      lat: garage.geometry.coordinates[1] || ''
     };
     this.totalSpaces = this.longCapacity + this.shortCapacity;
     this.freeSpaces = this.freeSpaceLong + this.freeSpaceShort;
