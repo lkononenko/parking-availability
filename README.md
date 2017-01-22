@@ -4,10 +4,12 @@
 Single page application using Angular2 that presents the parking availability
 
 ## Live Demo
+Please firstly accept the SSL certificate for CitySDK link [https://api.citysdk.waag.org](https://api.citysdk.waag.org)
+
 [Parking Availability](https://lkononenko.github.io/parking-availability)
 
 The app uses CitySDK Linked Data API. For example to get the list of 25 parking garage in Amsterdam:
-http://api.citysdk.waag.org/layers/parking.garage/objects?per_page=25
+https://api.citysdk.waag.org/layers/parking.garage/objects?per_page=25
 
 ## Development server
 This project was generated with [angular-cli](https://github.com/angular/angular-cli) version 1.0.0-beta.24.

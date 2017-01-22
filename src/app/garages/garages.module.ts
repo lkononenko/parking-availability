@@ -22,7 +22,5 @@ import { CONST } from "../const";
 })
 export class GaragesModule {
 
-  constructor() {
-    console.log(CONST.GOOGLE_MAP_API_KEY);
-  }
+  constructor() { }
 }
